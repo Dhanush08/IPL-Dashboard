@@ -22,6 +22,11 @@ class TeamMatches extends Component {
     this.setState({recentMatchesData: formattedData, isLoading})
   }
 
+  handleBack = () => {
+    const {history} = this.props
+    history.push('/')
+  }
+
   getFormattedObject = data => ({
     umpires: data.umpires,
     result: data.result,
@@ -75,7 +80,10 @@ class TeamMatches extends Component {
 
     return (
       <div className="team-matches-container">
-        <img src={teamBannerURL} alt={id} className="team-banner" />
+        <img src={teamBannerURL} alt="team banner" className="team-banner" />
+        <button onClick={this.handleBack} type="button">
+          Back
+        </button>
         <LatestMatch latestMatchData={latestMatch} />
         {this.renderRecentMatchesList()}
       </div>
